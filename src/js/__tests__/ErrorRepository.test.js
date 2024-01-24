@@ -5,12 +5,7 @@ describe('create new ErrorRepository', () => {
   test('correct dataErrors', () => {
     const errorRepository = new ErrorRepository(data);
 
-    const expected = new Map([
-      [1, 'error'],
-      [2, 'some error'],
-      [3, 'big error'],
-      [4, 'KA-BooM'],
-    ]);
+    const expected = new Map(data);
 
     expect(errorRepository.dataErrors).toEqual(expected);
   });
@@ -21,5 +16,15 @@ describe('create new ErrorRepository', () => {
     const expected = new Map([]);
 
     expect(errorRepository.dataErrors).toEqual(expected);
+  });
+});
+
+describe('test translate(code)', () => {
+  const errorRepository = new ErrorRepository(data);
+
+  describe('correct code', () => {
+    test.each(data)('%p', (code, error) => {
+      expect(errorRepository.translate(code)).toBe(error);
+    });
   });
 });

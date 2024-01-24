@@ -10,4 +10,8 @@ export default class ErrorRepository {
   constructor(dataErrors = []) {
     this.dataErrors = new Map(dataErrors);
   }
+
+  translate(code) {
+    return this.dataErrors.get(code) ?? 'Unknown error';
+  }
 }
