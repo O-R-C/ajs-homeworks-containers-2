@@ -11,6 +11,11 @@ export default class ErrorRepository {
     this.dataErrors = new Map(dataErrors);
   }
 
+  /**
+   * возвращает описание ошибки, исходя из полученного кода
+   * @param {number} code цифровой код ошибки
+   * @returns описание ошибки
+   */
   translate(code) {
     return this.dataErrors.get(code) ?? 'Unknown error';
   }
