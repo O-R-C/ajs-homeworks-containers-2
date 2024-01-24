@@ -27,4 +27,10 @@ describe('test translate(code)', () => {
       expect(errorRepository.translate(code)).toBe(error);
     });
   });
+
+  describe('unknown code', () => {
+    test.each(data)(`%p + 10`, (code) => {
+      expect(errorRepository.translate(code + 10)).toBe('Unknown error');
+    });
+  });
 });
